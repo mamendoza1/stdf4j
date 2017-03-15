@@ -52,13 +52,18 @@ public class CommandLine{
 
             OutputFormatter outputFormatter;
 
-            if(cl.hasOption("x"))
+            if(cl.hasOption("x")) {
                outputFormatter = new RawOutputFormatter();
-            else if(cl.hasOption("c"))
+               System.out.println("x");
+            }
+            else if(cl.hasOption("c")) {
                outputFormatter = new CsvOutputFormatter();
-            else
+               System.out.println("c");
+            }
+            else {
                outputFormatter = new DefaultOutputFormatter();
-
+               System.out.println("DefaultOutputFormatter");
+            }
             for(String file : cl.getArgs()){
                System.out.println(file);
 
@@ -66,8 +71,9 @@ public class CommandLine{
 
                System.out.println(visitor.size() + " records found");
 
-               for(Record record : visitor)
+               for(Record record : visitor) {
                   outputFormatter.write(record);
+               }
             }
          }
          else
